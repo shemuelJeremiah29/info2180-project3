@@ -85,7 +85,7 @@ function logout() {
 
 
     xmlhttp.open("POST", "logout.php", true); 
-    setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
     xmlhttp.send();
 
 }
