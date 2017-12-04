@@ -4,8 +4,8 @@ $username = getenv('C9_USER');
 $password = '';
 $dbname = 'cheapoMail';
 
-$username = $_GET['user'];
-$password = password_hash($_GET['pass'],PASSWORD_DEFAULT);
+$username = $_POST['user'];
+$password = password_hash($_POST['pass'],PASSWORD_DEFAULT);
 echo $password;
 if ($username == 'admin' ){
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

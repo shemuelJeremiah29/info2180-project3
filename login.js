@@ -20,17 +20,17 @@ function loginDoc() {
     };
 
 
-    url = "login.php?user=" + username + "&pass=" + password;
-    console.log(url);
+    // url = "login.php?user=" + username + "&pass=" + password;
+    // console.log(url);
 
 
-    xmlhttp.open("GET", url, true);
+    xmlhttp.open("POST", "login.php", true);
     xmlhttp.send();
 
 }
 
 function add_user() {
-    var firstname = document.getElementById("firstname").value;
+    var firstname = document.getElementById("firstname").value;  
     console.log(username);
     var lastname = document.getElementById("lastname").value;
     console.log(password);
@@ -43,7 +43,8 @@ function add_user() {
         alert("Password not valid");
         return false;
     }
-
+    
+   
     var url;
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -55,11 +56,11 @@ function add_user() {
     };
 
 
-    url = "add_user.php?firstname=" + firstname + "&lastname=" + lastname + "&user=" + username + "&pass=" + password;
-    console.log(url);
+    // url = "add_user.php?firstname=" + firstname + "&lastname=" + lastname + "&user=" + username + "&pass=" + password;
+    // console.log(url);
 
 
-    xmlhttp.open("GET", url, true);
+    xmlhttp.open("POST", "login.php", true);
     xmlhttp.send();
 
 }
@@ -77,11 +78,11 @@ function logout() {
     };
 
 
-    url = "logout.php?";
-    console.log(url);
+    // url = "logout.php?";
+    // console.log(url);
 
 
-    xmlhttp.open("GET", url, true);
+    xmlhttp.open("POST", "logout.php", true);
     xmlhttp.send();
 
 }

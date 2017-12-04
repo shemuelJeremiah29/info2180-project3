@@ -4,17 +4,18 @@ $username = getenv('C9_USER');
 $password = '';
 $dbname = 'cheapoMail';
 
-$name = $_GET['user'];
-$pass = hash('sha256',$_GET['pass']);
+$name = $_POST['user'];
+$pass = hash('sha256',$_POST['pass']);
 if($name == 'admin'){
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $stmt = $conn->query("SELECT * FROM Users WHERE username = '{$name}'");
     $results = $stmt->fetchALL(PDO::FETCH_ASSOC);
     foreach ($results as $row) {
      if($row['password'] == $pass){
-         session_start();
+         session_start(); 
+         
     echo'<h3> Insert information to add new user</h3>    
-        <form action="#" method="get" name="add_form" id="add" class="form_class">
+        <form action="#" method="post" name="add_form" id="add" class="form_class">
         <strong><label for="firstname">First Name:</label></strong>
         <input type="text" value="" name="firstname" id="firstname"/>
         <br><br>
@@ -34,7 +35,7 @@ if($name == 'admin'){
      }
      else {
          echo 'Username and Password did not match! Please try again<br/>
-            <form action="#" method="get" name="search_form" id="search" class="form_class">
+            <form action="#" method="post" name="search_form" id="search" class="form_class">
             <label>username :</label>
             <input type="text" name="uesername" id="user" /><br/>
             <label>password :</label>
@@ -59,7 +60,7 @@ else {
      }
      else {
          echo 'Username and Password did not match! Please try again<br/>
-            <form action="#" method="get" name="search_form" id="search" class="form_class">
+            <form action="#" method="post" name="search_form" id="search" class="form_class">
             <label>username :</label>
             <input type="text" name="uesername" id="user" /><br/>
             <label>password :</label>

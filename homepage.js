@@ -23,7 +23,10 @@ function compose_message(){
 		'<div id="Response"></div>',
 
 	].join('');
-	document.getElementById("pagecontent").innerHTML= compose_panel;
-	document.getElementById("Send").onclick= insert_data;
+	document.getElementById("pagecontent").innerHTML= compose_panel; 
+	var recep= document.getElementById("recipient"); 
+	var subject= document.getElementById('subject'); 
+	var message_content= document.getElementById("message_content"); 
+	document.getElementById("Send").onclick= insert_data; 
 
 }

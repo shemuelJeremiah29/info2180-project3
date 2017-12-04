@@ -5,10 +5,21 @@ $username = getenv('C9_USER');
 $password = '';
 $dbname = 'cheapoMail';
 
-$firstname = $_GET['firstname'];
-$lastname = $_GET['lastname'];
-$uname = $_GET['user'];
-$pass = hash('sha256',$_GET['pass']);
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$uname = $_POST['user'];
+$pass = hash('sha256',$_POST['pass']); 
+
+if(!filter_var($firstname, FILTER_SANITIZE_STRING)); 
+    echo "Enter Valid First Name"; 
+    
+if(!filter_var($lastname, FILTER_SANITIZE_STRING)); 
+    echo "Enter Valid Last Name"; 
+    
+if(!filter_var($uname, FILTER_SANITIZE_FULL_SPECIAL_CHARS));  
+    echo "Enter Valid Username";  
+    
+    
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $stmt = $conn->prepare("INSERT INTO Users VALUES(NULL, :fname, :lname, :uname, :pword)");
     $stmt->execute(array(
@@ -39,7 +50,7 @@ $pass = hash('sha256',$_GET['pass']);
     echo '</table><br/>';
     echo 'Do you want to add another user?<br/>';
     echo'<h3> Insert information to add new user</h3>    
-        <form action="#" method="get" name="add_form" id="add" class="form_class">
+        <form action="#" method="post" name="add_form" id="add" class="form_class">
         <strong><label for="firstname">First Name:</label></strong>
         <input type="text" value="" name="firstname" id="firstname"/>
         <br><br>
